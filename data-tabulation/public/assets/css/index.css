@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    height: auto;
+    width: 100%;
+    background-image: url("../images/main-bg.png"); /* path to your image */
+    background-size: cover;   /* makes it cover the whole screen */
+    background-position: center; /* centers the image */
+    background-repeat: no-repeat; /* prevents tiling */
+    background-attachment: fixed; /* optional: keeps image fixed when scrolling */
+}
+
+.overview, .about, .features, .milestone {
+  position: relative;
+  display: inline-block;
+}
+
+.overview:hover,
+.about:hover,
+.features:hover,
+.milestone:hover {
+  color: #727272; /* text turns white */
+  text-shadow: none;
+}
+
+.glow-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8.5px 15px;
+  border-radius: 50px; /* fully rounded pill */
+  background: #2563eb; /* Tailwind blue-600 */
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.glow-btn:hover {
+  box-shadow: inset 0 0 70px rgb(255, 255, 255), 
+              0 0 20px rgb(255, 255, 255);
+}
+
+/* Rotating glow border */
+.glow-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 12px 35px; /* thickness of glowing border */
+  background: conic-gradient(
+    from 0deg,
+    white,
+    transparent 25%,
+    transparent 75%,
+    white
+  );
+  animation: rotate 2s linear infinite;
+  -webkit-mask: 
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}
+
+/* Button background stays solid */
+.glow-btn::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: inherit;
+  background: #2563eb;
+  z-index: -1;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.header {
+    position: fixed;   /* keeps it always on top while scrolling */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: #fff;  /* add background so content doesn’t show through */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* optional shadow for clarity */
+}
+
+
+.firstpage,
+.secondpage{
+    height: 900px;
+    min-height: 900px;
+    max-height: auto;
+}
